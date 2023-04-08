@@ -1,9 +1,18 @@
 import * as React from 'react';
 import { Label } from '@fluentui/react';
-import { Nav, INavLinkGroup } from '@fluentui/react/lib/Nav';
-
+import { Nav,INavStyles, INavLinkGroup } from '@fluentui/react/lib/Nav';
+const navStyles: Partial<INavStyles> = {
+  root: {
+    width: 208,
+    height: 350,
+    boxSizing: 'border-box',
+    border: '1px solid #eee',
+    overflowY: 'auto',
+  },
+};
 const navLinkGroups: INavLinkGroup[] = [
-  {collapseByDefault:false,
+  
+  {
     links: [
       {
         name: 'Child link 1',
@@ -45,6 +54,7 @@ const navLinkGroups: INavLinkGroup[] = [
             target: '_blank',
           },
         ],
+        isExpanded: false,
       },
       {
         name: 'Parent link 2',
@@ -69,6 +79,6 @@ export interface IHelloWorldProps {
 export class HelloWorld extends React.Component<IHelloWorldProps> {
   public render(): React.ReactNode {
 
-   return <Nav ariaLabel="Nav example with nested links" groups={navLinkGroups} />;
+   return <Nav ariaLabel="Nav example with nested links" styles={navStyles} groups={navLinkGroups} />;
   }
 }
