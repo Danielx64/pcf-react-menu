@@ -18,7 +18,7 @@
       -->
     </external-service-usage>
     <!-- property node identifies a specific, configurable piece of data that the control expects from CDS -->
-    <property name="menuitems" display-name-key="Menu Items" description-key="Post JSON string containing menu items" of-type="SingleLine.TextArea" usage="bound" required="true" />
+    <property name="menuitems" display-name-key="Menu Items" description-key="Post JSON string containing menu items" of-type="Multiple" usage="bound" required="true" />
     <property name="textcolour" display-name-key="Text Colour" description-key="Provide hex code for text colour" of-type="SingleLine.Text" usage="bound" required="true" />
     <property name="backgroundcolour" display-name-key="Property_Display_Key" description-key="Provide hex code for background colour" of-type="SingleLine.Text" usage="bound" required="true" />
     <!--
