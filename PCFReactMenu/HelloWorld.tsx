@@ -6,6 +6,7 @@ export interface IHelloWorldProps {
   name?: string;
   textcolour?:string;
   backgroundcolour?:string;
+  menuitems?:string;
 }
 
 export class HelloWorld extends React.Component<IHelloWorldProps> {
@@ -31,65 +32,59 @@ export class HelloWorld extends React.Component<IHelloWorldProps> {
     {
       links: [
         {
-          name: 'Child link 1',
-          url: 'http://example.com',
-          target: '_blank',
-        },
-        {
-          name: 'Parent link 1',
-          url: '',
-          target: '_blank',
-          expandAriaLabel: 'Show more Parent link 1',
+          name: "Parent link 1",
+          url: "",
+          target: "_blank",
+          expandAriaLabel: "Show more Parent link 1",
           links: [
             {
-              name: 'Child link 1',
-              url: 'http://example.com',
-              target: '_blank',
+              name: "Child link 1",
+              url: "http://example.com",
+              target: "_blank"
             },
             {
-              name: 'Child link 2',
-              url: 'http://example.com',
-              target: '_blank',
-              expandAriaLabel: 'Show more Child link 2',
+              name: "Child link 2",
+              url: "http://example.com",
+              target: "_blank",
+              expandAriaLabel: "Show more Child link 2",
               links: [
                 {
-                  name: '3rd level link 1',
-                  url: 'http://example.com',
-                  target: '_blank',
+                  name: "3rd level link 1",
+                  url: "http://example.com",
+                  target: "_blank"
                 },
                 {
-                  name: '3rd level link 2',
-                  url: 'http://example.com',
-                  target: '_blank',
+                  name: "3rd level link 2",
+                  url: "http://example.com",
+                  target: "_blank"
                 },
-              ],
+              ]
             },
             {
-              name: 'Child link 3',
-              url: 'http://example.com',
-              target: '_blank',
+              name: "Child link 3",
+              url: "http://example.com",
+              target: "_blank"
             },
-          ],
-          isExpanded: false,
+          ]
         },
         {
-          name: 'Parent link 2',
-          url: 'http://example.com',
-          target: '_blank',
-          expandAriaLabel: 'Show more Parent link 2',
+          name: "Parent link 2",
+          url: "http://example.com",
+          target: "_blank",
+          expandAriaLabel: "Show more Parent link 2",
           links: [
             {
-              name: 'Child link 4',
-              url: 'http://example.com',
-              target: '_blank',
-            },
-          ],
-        },
-      ],
-    },
+              name: "Child link 4",
+              url: "http://example.com",
+              target: "_blank"
+            }
+          ]
+        }
+      ]
+    }
   ];
   public render(): React.ReactNode {
 
-   return <Nav ariaLabel="Nav example with nested links" styles={this.navStyles} groups={this.navLinkGroups} />;
+   return <Nav ariaLabel="Nav example with nested links" styles={this.navStyles} groups={JSON.parse(this.props.menuitems)} />;
   }
 }

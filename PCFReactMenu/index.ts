@@ -7,6 +7,8 @@ export class PCFReactMenu implements ComponentFramework.ReactControl<IInputs, IO
     private notifyOutputChanged: () => void;
     private _textcolour: string;
     private _backgroundcolour: string;
+    private docxFilled:string;
+
     /**
      * Empty constructor.
      */
@@ -26,6 +28,7 @@ export class PCFReactMenu implements ComponentFramework.ReactControl<IInputs, IO
     ): void {
         this._backgroundcolour = context.parameters.backgroundcolour.raw!;
         this._textcolour = context.parameters.textcolour.raw!;
+        const docxFilled =  context.parameters.menuitems?.raw! || "{}";
         this.notifyOutputChanged = notifyOutputChanged;
     }
 
@@ -35,7 +38,7 @@ export class PCFReactMenu implements ComponentFramework.ReactControl<IInputs, IO
      * @returns ReactElement root react element for the control
      */
     public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
-        const props: IHelloWorldProps = { name: 'Hello, World!',textcolour: this._textcolour,backgroundcolour:this._backgroundcolour };
+        const props: IHelloWorldProps = { name: 'Hello, World!',textcolour: this._textcolour,backgroundcolour:this._backgroundcolour,menuitems:this.docxFilled };
         return React.createElement(
             HelloWorld, props
         );
