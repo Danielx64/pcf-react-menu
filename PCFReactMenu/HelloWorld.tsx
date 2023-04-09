@@ -1,20 +1,15 @@
 import * as React from 'react';
-import { IInputs } from "./generated/ManifestTypes";
 import { Nav,INavStyles, INavLinkGroup } from '@fluentui/react/lib/Nav';
 
 
 export interface IHelloWorldProps {
   name?: string;
+  textcolour?:string;
+  backgroundcolour?:string;
 }
 
 export class HelloWorld extends React.Component<IHelloWorldProps> {
-  private _textcolour: string;
-	private _bgcolour: string;
-	private _menuitems: string;
-  context: ComponentFramework.Context<IInputs>
-  menuitems = this.context.parameters.menuitems.raw;
-  bgcolour = this.context.parameters.backgroundcolour.raw;
-  textcolour  = this.context.parameters.textcolour.raw;
+
   navStyles: Partial<INavStyles> = {
     root: {
       width: 208,
@@ -22,7 +17,13 @@ export class HelloWorld extends React.Component<IHelloWorldProps> {
       boxSizing: 'border-box',
       border: '1px solid #eee',
       overflowY: 'auto',
-      backgroundColor: this.context.parameters.backgroundcolour.raw,
+      background:this.props.backgroundcolour,
+    },
+    // these link styles override the default truncation behavior
+    link: {
+      whiteSpace: 'normal',
+      lineHeight: 'inherit',
+      color:this.props.textcolour,
     },
   };
   navLinkGroups: INavLinkGroup[] = [
