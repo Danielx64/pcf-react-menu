@@ -8,7 +8,7 @@ export class PCFReactMenu implements ComponentFramework.ReactControl<IInputs, IO
     private notifyOutputChanged: () => void;
     private _textcolour: string;
     private _backgroundcolour: string;
-    private docxFilled:object;
+    private docxFilled:string;
 
     /**
      * Empty constructor.
@@ -29,61 +29,7 @@ export class PCFReactMenu implements ComponentFramework.ReactControl<IInputs, IO
     ): void {
         this._backgroundcolour = context.parameters.backgroundcolour.raw||"";
         this._textcolour = context.parameters.textcolour.raw||"";
-        this.docxFilled =  JSON.parse(context.parameters.menuitems.raw)|| [
-            {
-              "links": [
-                {
-                  "name": "Parent link 1",
-                  "url": "",
-                  "target": "_blank",
-                  "expandAriaLabel": "Show more Parent link 1",
-                  "links": [
-                    {
-                      "name": "Child link 1",
-                      "url": "http://example.com",
-                      "target": "_blank"
-                    },
-                    {
-                      "name": "Child link 2",
-                      "url": "http://example.com",
-                      "target": "_blank",
-                      "expandAriaLabel": "Show more Child link 2",
-                      "links": [
-                        {
-                         "name": "3rd level link 1",
-                          "url": "http://example.com",
-                          "target": "_blank"
-                        },
-                        {
-                          "name": "3rd level link 2",
-                          "url": "http://example.com",
-                          "target": "_blank"
-                        },
-                      ]
-                    },
-                    {
-                      "name": "Child link 3",
-                      "url": "http://example.com",
-                      "target": "_blank"
-                    },
-                  ]
-                },
-                {
-                  "name": "Parent link 2",
-                  "url": "http://example.com",
-                  "target": "_blank",
-                  "expandAriaLabel": "Show more Parent link 2",
-                  "links": [
-                    {
-                      "name": "Child link 4",
-                      "url": "http://example.com",
-                      "target": "_blank"
-                    }
-                  ]
-                }
-              ]
-            }
-          ] 
+        this.docxFilled =  JSON.parse(context.parameters.menuitems.raw!)||"";
         this.notifyOutputChanged = notifyOutputChanged;
     }
 

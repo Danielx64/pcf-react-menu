@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Nav,INavStyles, INavLinkGroup } from '@fluentui/react/lib/Nav';
-import { decode } from "base64-arraybuffer";
+//import { decode } from "base64-arraybuffer";
 
 const BASE64_MARKER = ";base64,";
 
@@ -12,11 +12,7 @@ export interface IHelloWorldProps {
 }
 
 export class HelloWorld extends React.Component<IHelloWorldProps> {
-  private convertStringToArray = (itemsdata: string) => {    
-    const base64Index = itemsdata.indexOf(BASE64_MARKER) + BASE64_MARKER.length;
-    const base64 = itemsdata.substring(base64Index);
-    return decode(base64)   
-  };  
+ 
   navStyles: Partial<INavStyles> = {
     root: {
       width: 208,
@@ -90,6 +86,6 @@ export class HelloWorld extends React.Component<IHelloWorldProps> {
   ];
   public render(): React.ReactNode {
 
-   return <Nav ariaLabel="Nav example with nested links" styles={this.navStyles} groups={this.props.itemsdata} />;
+   return <Nav ariaLabel="Nav example with nested links" styles={this.navStyles} groups={this.navLinkGroups} />;
   }
 }
