@@ -22,6 +22,7 @@ export class PCFReactMenu implements ComponentFramework.ReactControl<IInputs, IO
      * @param notifyOutputChanged A callback method to alert the framework that the control has new outputs ready to be retrieved asynchronously.
      * @param state A piece of data that persists in one session for a single user. Can be set at any point in a controls life cycle by calling 'setControlState' in the Mode interface.
      */
+
     public init(
         context: ComponentFramework.Context<IInputs>,
         notifyOutputChanged: () => void,
@@ -29,7 +30,7 @@ export class PCFReactMenu implements ComponentFramework.ReactControl<IInputs, IO
     ): void {
         this._backgroundcolour = context.parameters.backgroundcolour.raw||"";
         this._textcolour = context.parameters.textcolour.raw||"";
-        this.docxFilled =  JSON.parse(context.parameters.menuitems.raw!)||"";
+       // this.docxFilled =  JSON.parse(context.parameters.menuitems.raw!)||"";
         this.notifyOutputChanged = notifyOutputChanged;
     }
 
@@ -39,7 +40,7 @@ export class PCFReactMenu implements ComponentFramework.ReactControl<IInputs, IO
      * @returns ReactElement root react element for the control
      */
     public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
-        const props: IHelloWorldProps = {textcolour: this._textcolour,backgroundcolour:this._backgroundcolour,itemsdata:this.docxFilled};
+        const props: IHelloWorldProps = {textcolour: this._textcolour,backgroundcolour:this._backgroundcolour};
         return React.createElement(
             HelloWorld, props
         );
