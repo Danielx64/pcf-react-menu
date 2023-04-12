@@ -8,7 +8,7 @@ export class PCFReactMenu implements ComponentFramework.ReactControl<IInputs, IO
     private notifyOutputChanged: () => void;
     private _textcolour: string;
     private _backgroundcolour: string;
-    private docxFilled:string;
+    private _dataSet: string;
 
     /**
      * Empty constructor.
@@ -30,6 +30,7 @@ export class PCFReactMenu implements ComponentFramework.ReactControl<IInputs, IO
     ): void {
         this._backgroundcolour = context.parameters.backgroundcolour.raw||"";
         this._textcolour = context.parameters.textcolour.raw||"";
+        this._dataSet = context.parameters.menuitems.raw || "{links:[{name:\"Parentlink1\",url:\"\",target:\"_blank\",expandAriaLabel:\"ShowmoreParentlink1\",links:[{name:\"Childlink1\",url:\"http://example.com\",target:\"_blank\"},{name:\"Childlink2\",url:\"http://example.com\",target:\"_blank\",expandAriaLabel:\"ShowmoreChildlink2\",links:[{name:\"3rdlevellink1\",url:\"http://example.com\",target:\"_blank\"},{name:\"3rdlevellink2\",url:\"http://example.com\",target:\"_blank\"},]},{name:\"Childlink3\",url:\"http://example.com\",target:\"_blank\"}]},{name:\"Parentlink2\",url:\"http://example.com\",target:\"_blank\",expandAriaLabel:\"ShowmoreParentlink2\",links:[{name:\"Childlink4\",url:\"http://example.com\",target:\"_blank\"}]}]}";
        // this.docxFilled =  JSON.parse(context.parameters.menuitems.raw!)||"";
         this.notifyOutputChanged = notifyOutputChanged;
     }
@@ -40,7 +41,7 @@ export class PCFReactMenu implements ComponentFramework.ReactControl<IInputs, IO
      * @returns ReactElement root react element for the control
      */
     public updateView(context: ComponentFramework.Context<IInputs>): React.ReactElement {
-        const props: IHelloWorldProps = {textcolour: this._textcolour,backgroundcolour:this._backgroundcolour};
+        const props: IHelloWorldProps = {textcolour: this._textcolour,backgroundcolour:this._backgroundcolour,dataSet:this._dataSet};
         return React.createElement(
             HelloWorld, props
         );
