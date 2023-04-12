@@ -39,7 +39,7 @@ export class HelloWorld extends React.Component<IHelloWorldProps> {
   };
   navLinkGroups: INavLinkGroup[] = [
 
- this.docxFilled
+ this.dataSetObject
 
   ];
   public render(): React.ReactNode {
